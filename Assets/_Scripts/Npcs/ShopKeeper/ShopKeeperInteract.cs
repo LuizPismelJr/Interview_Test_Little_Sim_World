@@ -1,11 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopKeeperInteract : MonoBehaviour, IInteractable
 {
-   public void Interact() 
+    [Header("UiInteraction")]
+    [SerializeField]GameObject UiTeste;
+
+    public void Interact() 
     {
-        Debug.Log("Vai se fuder Douzane");
+        SetStateOfOptionUI(true);
     }
+
+    public void ExitInteration() 
+    {
+        SetStateOfOptionUI(false);
+    }
+
+    void SetStateOfOptionUI(bool state) 
+    {
+        UiTeste.SetActive(state);
+    }
+
+    void TalkingToPlayer() 
+    {
+
+    }
+
+    void ShowTheStoreGoods() 
+    {
+
+    }
+
 }

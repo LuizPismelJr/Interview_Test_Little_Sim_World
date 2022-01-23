@@ -4,14 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class ShopKeeperInteract : MonoBehaviour, IInteractable
 {
     [Header("UiInteraction")]
     [SerializeField]GameObject UiTest;
 
-    [Header("UiInteraction")]
-    [SerializeField] TextMeshProUGUI textTest;
+    [Header("BoxUiManager")]
+    [SerializeField] BoxUiManager textToChange;
+
+    [Header("WhatToSay")]
+    [SerializeField] string[] saying;
+
+    string currentTextToSend;
 
     public void Interact() 
     {
@@ -31,7 +37,12 @@ public class ShopKeeperInteract : MonoBehaviour, IInteractable
 
     void TalkingToPlayer() 
     {
-        textTest.text = "vai se fuder douzane";
+        int textToSendId = Random.Range(0, saying.Length);
+        Debug.Log(textToSendId);
+
+        currentTextToSend = saying[textToSendId];
+        
+        textToChange.ChangeCurrentTextShow(currentTextToSend);
     }
 
     void ShowTheStoreGoods() 

@@ -2,15 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ShopKeeperInteract : MonoBehaviour, IInteractable
 {
     [Header("UiInteraction")]
-    [SerializeField]GameObject UiTeste;
+    [SerializeField]GameObject UiTest;
+
+    [Header("UiInteraction")]
+    [SerializeField] TextMeshProUGUI textTest;
 
     public void Interact() 
     {
         SetStateOfOptionUI(true);
+        TalkingToPlayer();
     }
 
     public void ExitInteration() 
@@ -20,12 +26,12 @@ public class ShopKeeperInteract : MonoBehaviour, IInteractable
 
     void SetStateOfOptionUI(bool state) 
     {
-        UiTeste.SetActive(state);
+        UiTest.SetActive(state);
     }
 
     void TalkingToPlayer() 
     {
-
+        textTest.text = "vai se fuder douzane";
     }
 
     void ShowTheStoreGoods() 

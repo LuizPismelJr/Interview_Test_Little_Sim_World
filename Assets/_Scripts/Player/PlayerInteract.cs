@@ -4,17 +4,42 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    IInteractable interactable;
+    bool isInInteractiveZone;
+    PlayerMovement playerMovement;
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        ButtonToInteract();
+    }
+
+    void ButtonToInteract() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isInInteractiveZone)
+            {
+                interactable?.Interact();
+                //playerMovement.enabled = false;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IInteractable interactable = collision.GetComponent<IInteractable>();
-
-        interactable?.Interact();
+        interactable = collision.GetComponent<IInteractable>();
+        isInInteractiveZone = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        IInteractable interactable = collision.GetComponent<IInteractable>();
-
+        interactable = collision.GetComponent<IInteractable>();
+        isInInteractiveZone = false;
         interactable?.ExitInteration();
     }
 }

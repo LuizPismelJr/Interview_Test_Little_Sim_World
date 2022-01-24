@@ -8,11 +8,15 @@ using Random = UnityEngine.Random;
 
 public class ShopKeeperInteract : MonoBehaviour, IInteractable
 {
-    [Header("UiInteraction")]
-    [SerializeField]GameObject UiTest;
 
-    [Header("BoxUiManager")]
-    [SerializeField] BoxUiManager textToChange;
+    [Header("StorePanel")]
+    [SerializeField] GameObject storePanel;
+
+    [Header("UiInteraction")]
+    [SerializeField]GameObject uiTalkTextGroup;
+
+    [Header("TalkingBoxUiManager")]
+    [SerializeField] TalkingBoxUiManager textToChange;
 
     [Header("WhatToSay")]
     [SerializeField] string[] saying;
@@ -32,13 +36,12 @@ public class ShopKeeperInteract : MonoBehaviour, IInteractable
 
     void SetStateOfOptionUI(bool state) 
     {
-        UiTest.SetActive(state);
+        uiTalkTextGroup.SetActive(state);
     }
 
     void TalkingToPlayer() 
     {
         int textToSendId = Random.Range(0, saying.Length);
-        Debug.Log(textToSendId);
 
         currentTextToSend = saying[textToSendId];
         
@@ -47,7 +50,7 @@ public class ShopKeeperInteract : MonoBehaviour, IInteractable
 
     void ShowTheStoreGoods() 
     {
-
+        storePanel.SetActive(true);
     }
 
 }

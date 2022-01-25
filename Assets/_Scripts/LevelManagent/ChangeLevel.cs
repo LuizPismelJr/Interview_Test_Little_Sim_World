@@ -8,4 +8,9 @@ public class ChangeLevel : MonoBehaviour
     {
         LevelManager.instance.LoadLevel(levelName);
     }
+
+    public void ExitingGame() 
+    {
+        Application.Quit();
+    }
 }

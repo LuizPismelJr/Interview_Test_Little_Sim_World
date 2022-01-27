@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerInputMovement()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         moving.x = Input.GetAxis("Horizontal");
         moving.y = Input.GetAxis("Vertical");
         moving.z = transform.position.z;

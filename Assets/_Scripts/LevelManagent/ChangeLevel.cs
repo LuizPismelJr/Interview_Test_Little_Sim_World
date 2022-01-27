@@ -9,7 +9,7 @@ public class ChangeLevel : MonoBehaviour
         LevelManager.instance.LoadLevel(levelName);
     }
 
-    public void ExitingGame() 
+    public void ExitingGame()
     {
         Application.Quit();
     }
